@@ -1,8 +1,8 @@
 # Password Generator
-[General Info](#General-Info)
-[Technology](#Technology)
-[Setup](#Setup)
-[Preview](#preview)
+* [General Info](#General-Info)
+* [Technology](#Technology)
+* [Setup](#Setup)
+* [Preview](#preview)
 
 ## General Info
 This is a Javascript that takes user inputs about requirements and creates a random password string
