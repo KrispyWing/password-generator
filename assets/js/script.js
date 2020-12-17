@@ -112,6 +112,18 @@ var getPasswordOptions = function() {
   var length = window.prompt("Enter a number between 8 and 128 for your password length");
   console.log(length);
 
+  //Check that a number less than 8 hasn't been entered
+  if (length < 8) {
+    window.alert("You must enter a value between 8 and 128");
+    return;
+  }
+
+  //Check that the number is not greater than 128
+  if (length > 128) {
+    window.alert("You must enter a value between 8 and 128");
+    return;
+  }
+
   //Ask user if they want special characters
   var hasSpecChar = window.confirm("Do you want Special Characters in your password?");
     console.log(hasSpecChar);
@@ -127,6 +139,17 @@ var getPasswordOptions = function() {
   //Ask user if they want uppercase letters
   var hasUpAlpha = window.confirm("Do you want uppercase letters in your password?");
     console.log(hasUpAlpha);
+
+  //Check that at least one type of character has been chosen
+  if (
+    hasSpecChar === false &&
+    hasNumChar === false &&
+    hasLowAlpha === false &&
+    hasUpAlpha === false
+  ) {
+    window.alert("You must say OK to at least one type of character");
+    return;
+  }
 
   // Store inputs from choices
   var passwordOptions = {
