@@ -13,5 +13,8 @@ This is a Javascript that takes user inputs about requirements and creates a ran
 ## Technologies
 Page is built using HTML, CSS and Javascript
 
+## Setup
+Webpage can be viewed at https://krispywing.github.io/password-generator
+
 ## Preview
 <img src="./assets/images/preview.jpg" />
