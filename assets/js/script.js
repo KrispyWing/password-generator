@@ -124,6 +124,12 @@ var getPasswordOptions = function() {
     return;
   }
 
+  //Check input to make sure it is a number
+  if (isNaN(length)) {
+    window.alert("You must enter a value between 8 and 128");
+    return;
+  }
+
   //Ask user if they want special characters
   var hasSpecChar = window.confirm("Do you want Special Characters in your password?");
     console.log(hasSpecChar);
@@ -141,12 +147,7 @@ var getPasswordOptions = function() {
     console.log(hasUpAlpha);
 
   //Check that at least one type of character has been chosen
-  if (
-    hasSpecChar === false &&
-    hasNumChar === false &&
-    hasLowAlpha === false &&
-    hasUpAlpha === false
-  ) {
+  if (hasSpecChar === false && hasNumChar === false && hasLowAlpha === false && hasUpAlpha === false) {
     window.alert("You must say OK to at least one type of character");
     return;
   }
@@ -229,7 +230,7 @@ var generatePassword = function() {
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword() {
+function writePassword() {  
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
