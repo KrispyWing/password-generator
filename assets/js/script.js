@@ -127,11 +127,79 @@ var getPasswordOptions = function() {
   //Ask user if they want uppercase letters
   var hasUpAlpha = window.confirm("Do you want uppercase letters in your password?");
     console.log(hasUpAlpha);
+
+  // Store inputs from choices
+  var passwordOptions = {
+    length: length,
+    hasSpecChar: hasSpecChar,
+    hasNumChar: hasNumChar,
+    hasLowAlpha: hasLowAlpha,
+    hasUpAlpha: hasUpAlpha
+  };
+
+  return passwordOptions;
 }
 
-var generatePassword = function() {
-  debugger;
-  getPasswordOptions();
+  //pick a random character from an array
+  var randomChar = function (charArray) {
+    var randomNum = Math.floor(Math.random() * charArray.length);
+    var randomChoice = charArray[randomNum];
+    return randomChoice;
+  }
+
+var generatePassword = function() {  
+  var options = getPasswordOptions();
+  
+  //Variable to store the password result
+  var output = [];
+
+  // Array variable to hold all possible characters based on options picked
+  var possibleChars = [];
+
+  // Array variable to hold at least one of each character type that was chosen
+  var chosenChars = [];
+
+  //Condition to add special characters to list if hasSpecChar is true
+  //Add a special character to the chosenChar array
+  if (options.hasSpecChar) {
+    possibleChars = possibleChars.concat(specChar);
+    chosenChars.push(randomChar(specChar));
+  }
+
+  //Condition to add numbers to list if hasNumChar is true
+  //Add a special character to the chosenChar array
+  if (options.hasNumChar) {
+    possibleChars = possibleChars.concat(numChar);
+    chosenChars.push(randomChar(numChar));
+  }
+
+  //Condition to add lowercase letters to list if hasLowAlpha is true
+  //Add a special character to the chosenChar array
+  if (options.hasLowAlpha) {
+    possibleChars = possibleChars.concat(lowAlpha);
+    chosenChars.push(randomChar(lowAlpha));
+  }
+
+  //Condition to add uppercase letters to list if hasUpAlpha is true
+  //Add a special character to the chosenChar array
+  if (options.hasUpAlpha) {
+    possibleChars = possibleChars.concat(upAlpha);
+    chosenChars.push(randomChar(upAlpha));
+  }
+
+  //loop to pick random characters out of the possibleChar array
+  for (var i = 0; i < options.length; i++) {
+    var possibleChar = randomChar(possibleChars);
+    output.push(possibleChar);
+  }
+
+  //make sure we add in at least one of each type of chosen character
+  for (var i = 0; i < chosenChars.length; i++) {
+    var chosenChar = randomChar(chosenChars);
+    output[i] = chosenChars[i];
+  }
+
+  return output.join("");
 }
 
 // Assignment Code
